@@ -32,7 +32,7 @@ jobs:
       - name: 安装依赖
         run: |
           sudo apt install gcc-aarch64-linux-gnu
-          sudo apt install bison flex libncurses-dev make libssl-dev u-boot-tools curl build-essential:native debhelper-compat (= 12) libelf-dev:native
+          sudo apt install bison flex libncurses-dev make libssl-dev u-boot-tools curl build-essential debhelper-compat libelf-dev
 
       - name: 拉取config
         run: curl https://gist.githubusercontent.com/TC999/05de52fedac2818dc2cadf207e748fdb/raw/40eebaae07b085646b02027f6153949c423bbc46/.config -o .config
