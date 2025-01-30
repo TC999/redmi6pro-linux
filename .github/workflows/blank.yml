@@ -43,6 +43,6 @@ jobs:
       - name: 上传
         uses: actions/upload-artifact@v4.6.0
         with:
-          ptah: |
+          path: |
             *.deb
             vmlinux
