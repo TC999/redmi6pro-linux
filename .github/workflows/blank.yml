@@ -40,6 +40,9 @@ jobs:
       - name: 编译
         run: make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- deb-pkg -j$(nproc)
 
+      - name: 移动
+        run: find . -type f -name "*.deb" -exec cp {} . \;
+
       - name: 上传
         uses: actions/upload-artifact@v4.6.0
         with:
