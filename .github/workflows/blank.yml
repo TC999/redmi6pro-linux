@@ -23,7 +23,6 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v4
       - name: Linux 源码
         uses: actions/checkout@v4
         with:
@@ -33,7 +32,10 @@ jobs:
       - name: 安装依赖
         run: |
           sudo apt install gcc-aarch64-linux-gnu
-          sudo apt install bison flex libncurses-dev make libssl-dev u-boot-tools
+          sudo apt install bison flex libncurses-dev make libssl-dev u-boot-tools curl
+
+      - name: 拉取config
+        run: curl https://gist.githubusercontent.com/TC999/05de52fedac2818dc2cadf207e748fdb/raw/40eebaae07b085646b02027f6153949c423bbc46/.config -o .config
 
       - name: 编译
         run: make ARCH=arm64 CROSS_COMPILE=gcc-aarch64-linux-gnu deb-pkg -j$(nproc)
