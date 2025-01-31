@@ -49,3 +49,5 @@ jobs:
         with:
           path: |
             *.deb
+            linux/arch/arm64/boot
+            linux/vmlinux
