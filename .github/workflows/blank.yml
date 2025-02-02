@@ -41,6 +41,9 @@ jobs:
       #  run: curl https://gist.githubusercontent.com/TC999/05de52fedac2818dc2cadf207e748fdb/raw/40eebaae07b085646b02027f6153949c423bbc46/.config -o linux/.config
         run: mv .config linux/.config
 
+      - name: 设备树
+        run: mv msm8953-xiaomi-sakura.dts linux/arch/arm64/boot/dts/qcom/msm8953-xiaomi-sakura.dts
+
       - name: 编译
         run: cd linux && make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- deb-pkg -j$(nproc)
 
