@@ -5,10 +5,10 @@ name: CI
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+  #push:
+  #  branches: [ "main" ]
+  #pull_request:
+  #  branches: [ "main" ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -23,6 +23,7 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v4
       - name: Linux 源码
         uses: actions/checkout@v4
         with:
@@ -35,8 +36,8 @@ jobs:
           sudo apt install gcc-aarch64-linux-gnu
           sudo apt install bison flex libncurses-dev make libssl-dev u-boot-tools curl build-essential debhelper-compat libelf-dev
 
-      - name: 拉取config
-        run: curl https://gist.githubusercontent.com/TC999/05de52fedac2818dc2cadf207e748fdb/raw/40eebaae07b085646b02027f6153949c423bbc46/.config -o linux/.config
+      #- name: 拉取config
+      #  run: curl https://gist.githubusercontent.com/TC999/05de52fedac2818dc2cadf207e748fdb/raw/40eebaae07b085646b02027f6153949c423bbc46/.config -o linux/.config
 
       - name: 编译
         run: cd linux && make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- deb-pkg -j$(nproc)
