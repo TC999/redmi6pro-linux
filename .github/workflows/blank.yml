@@ -37,12 +37,12 @@ jobs:
           sudo apt install bison flex libncurses-dev make libssl-dev u-boot-tools curl build-essential debhelper-compat libelf-dev
 
       - name: 拉取config
+        #run: curl https://raw.githubusercontent.com/TC999/redmi6pro-linux/refs/heads/main/.config -o linux/.config
       #  run: curl https://gist.githubusercontent.com/TC999/05de52fedac2818dc2cadf207e748fdb/raw/40eebaae07b085646b02027f6153949c423bbc46/.config -o linux/.config
-         run: mv .config linux/.config
+        run: mv .config linux/.config
 
       - name: 编译
-        run:
-        cd linux && make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- deb-pkg -j$(nproc)
+        run: cd linux && make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- deb-pkg -j$(nproc)
 
       - name: 移动
         run: find . -type f -name "*.deb" -exec cp {} . \;
