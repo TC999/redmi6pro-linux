@@ -27,8 +27,8 @@ jobs:
       - name: Linux 源码
         uses: actions/checkout@v4
         with:
-          repository: torvalds/linux
-          ref: v6.6
+          repository: msm8953-mainline/linux
+          ref: v6.6.0-r0
           path: linux
 
       - name: 安装依赖
