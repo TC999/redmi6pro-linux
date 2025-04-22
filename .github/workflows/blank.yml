@@ -19,6 +19,8 @@ jobs:
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-22.04-arm
+    env:
+      LANG: zh_CN.UTF-8
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -33,6 +35,8 @@ jobs:
 
       - name: 安装依赖
         run: |
+          sudo apt-get update
+          sudo apt-get install language-pack-zh-hans
           sudo apt install gcc-aarch64-linux-gnu
           sudo apt install bison flex libncurses-dev make libssl-dev u-boot-tools curl build-essential debhelper-compat libelf-dev
 
